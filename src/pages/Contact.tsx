@@ -46,7 +46,7 @@ const Contact = () => {
     //const submissionToast = toast.loading('Sending your message...');
 
     try {
-      const response = await fetch('http://localhost:5000/api/send', {
+      const response = await fetch('https://zimaxx.onrender.com/api/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
