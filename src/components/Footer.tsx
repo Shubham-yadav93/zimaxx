@@ -2,20 +2,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import {Shield, Phone, Mail, MapPin, Linkedin, Twitter, Facebook, Instagram} from 'lucide-react'
+import { Phone, Mail, MapPin, Linkedin, Twitter, Facebook, Instagram} from 'lucide-react'
 
 const Footer = () => {
   const quickLinks = [
     { name: 'Workforce Wellbeing', path: '/platform-services' },
     { name: 'Senior Citizen Safety', path: '/platform-services' },
-    { name: 'About Us', path: '/about-us' },
-    { name: 'Media', path: '/blog' },
-    { name: 'Blog', path: '/blog' }
+    { name: 'CAPTAIN INDIA', path: 'https://captain-india.com' }
   ]
 
   const otherLinks = [
     { name: 'About Us', path: '/about-us' },
-    { name: 'Help', path: '/contact' },
+    { name: 'Contact Us', path: '/contact' },
     { name: 'Blog', path: '/blog' },
     { name: 'Privacy Policy', path: '/privacy-policy' },
     { name: 'Terms & Conditions', path: '/terms-conditions' },
@@ -50,7 +48,7 @@ const Footer = () => {
                   className="h-16 sm:h-20 w-auto drop-shadow-md mb-4"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ 
-                    scale: 1.3, 
+                    scale: 1, 
                     opacity: 1,
                      filter: "drop-shadow(0 0 20px rgba(255, 255, 255, 0.6))",
                     y: [0, -2, 0]
@@ -64,20 +62,13 @@ const Footer = () => {
                     }
                   }}
                   whileHover={{ 
-                    scale: 1.38,
-                    filter: "drop-shadow(0 0 20px rgba(255, 255, 255, 0.9))",
+                    scale: 1.1,
+                     filter: "drop-shadow(0 0 20px rgba(255, 255,255, 1.5))",
                     transition: { duration: 0.3 }
                   }}
                   whileTap={{ scale: 0.95 }}
                 />
               </Link>
-              
-              {/* <div className="text-center sm:text-left">
-                <h3 className="text-xl sm:text-lg lg:text-2xl font-bold bg-gradient-to-r from-red-400 to-blue-400 bg-clip-text text-transparent">
-                  WorkSafe4567
-                </h3>
-                <p className="text-sm text-gray-400">Safety Solutions</p>
-              </div> */}
             </motion.div>
             
             <motion.p
@@ -128,6 +119,7 @@ const Footer = () => {
                 >
                   <Link
                     to={link.path}
+                    
                     className="text-gray-300 hover:text-red-400 transition-colors duration-300 block py-1 text-sm sm:text-base touch-manipulation"
                   >
                     {link.name}
@@ -185,8 +177,8 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <div className="text-gray-300 text-sm sm:text-base">
-                <p>Zimaxe Tech Solutions Private Limited</p>
-                <p>4D, Chimbai Lane, Off Hill Road</p>
+                <p>Zimaxx Tech Solutions Private Limited</p>
+                {/* <p>4D, Chimbai Lane, Off Hill Road</p> */}
                 <p>Bandra West, Mumbai</p>
                 <p>400050</p>
               </div>
@@ -198,7 +190,7 @@ const Footer = () => {
 
               <div className="flex items-center justify-center sm:justify-start space-x-2 text-gray-300">
                 <Mail className="w-4 h-4 text-red-400 flex-shrink-0" />
-                <span className="text-sm sm:text-base break-all sm:break-normal">support@worksafe4567.com</span>
+                <span className="text-sm sm:text-base break-all sm:break-normal">support@Zimaxxtech.com</span>
               </div>
             </motion.div>
           </div>
@@ -212,7 +204,7 @@ const Footer = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-xs sm:text-sm">
-            &copy; 2024 WorkSafe4567. All rights reserved. | Powered by Zimaxe Tech Solutions
+           Copyright &copy; 2025 Zimaxx Tech. All rights reserved. | Powered by Zimaxx Tech Solutions
           </p>
         </motion.div>
       </div>

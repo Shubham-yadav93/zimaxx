@@ -1,28 +1,52 @@
-
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import {ArrowRight, Users, Shield, Heart, Zap, Award, Globe, ChevronLeft, ChevronRight} from 'lucide-react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+  ArrowRight,
+  Users,
+  Shield,
+  Heart,
+  Zap,
+  Award,
+  Globe,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const [heroRef, heroInView] = useInView({ threshold: 0.3, triggerOnce: true })
-  const [aboutRef, aboutInView] = useInView({ threshold: 0.3, triggerOnce: true })
-  const [servicesRef, servicesInView] = useInView({ threshold: 0.3, triggerOnce: true })
-  const [platformsRef, platformsInView] = useInView({ threshold: 0.3, triggerOnce: true })
-  const [newsRef, newsInView] = useInView({ threshold: 0.3, triggerOnce: true })
+  const [heroRef, heroInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+  const [aboutRef, aboutInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+  const [servicesRef, servicesInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+  const [platformsRef, platformsInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+  const [newsRef, newsInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
 
   // Carousel state
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   // Typewriter effect state
-  const [displayText, setDisplayText] = useState('')
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const fullText = "AI, IoT, VA, and Cloud Solutions"
-  const words = ["AI,", "IoT,", "VA,", "and", "Cloud", "Solutions"]
+  const [displayText, setDisplayText] = useState("");
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const fullText = "AI, IoT, VA, and Cloud Solutions";
+  const words = ["AI,", "IoT,", "VA,", "and", "Cloud", "Solutions"];
 
   const heroSlides = [
     // {
@@ -31,126 +55,139 @@ const Home = () => {
     //   subtitle: 'Advanced AI monitoring for workplace safety',
     //   description: 'Comprehensive workplace safety monitoring with AI-powered analytics and real-time alerts'
     // },
-    
-    {
-      src: 'https://images.pexels.com/photos/5668856/pexels-photo-5668856.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      title: 'WORKFORCE WELLBEING',
-      subtitle: 'IoT-enabled workplace monitoring',
-      description: 'Smart IoT solutions for comprehensive workplace safety and employee wellbeing'
-    },
-    {
-      src: 'https://images.pexels.com/photos/3768114/pexels-photo-3768114.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      title: 'SENIOR CITIZEN SAFETY',
-      subtitle: '24/7 health and safety tracking',
-      description: 'Continuous health monitoring and safety tracking for senior citizens living independently'
-    },
-    {
-     src:"https://i.ibb.co/0jSJJCp7/Captain-India.webp",
-      title: 'SENIOR CITIZEN SAFETY',
-      subtitle: '24/7 health and safety tracking',
-      description: 'Continuous health monitoring and safety tracking for senior citizens living independently',
-       link:'captain-india.com',
-       
 
-    }
-  ]
+    {
+      src: "https://images.pexels.com/photos/5668856/pexels-photo-5668856.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      title: "Workforce Safety 24/7:",
+      subtitle: "Always On",
+      description:
+        "India’s First Workforce Safety and Wellness Partner",
+    },
+    {
+      src: "https://images.pexels.com/photos/3768114/pexels-photo-3768114.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      title: "Senior Citizen Safety:",
+      subtitle: " Har Waqt Appke Saath",
+      description:
+        "Tech-enabled safety services 24/7 ",
+    },
+    {
+      src: "https://i.ibb.co/0jSJJCp7/Captain-India.webp",
+      title: "Captain India Pet Happiness and Safety:",
+      subtitle: "Your Pet's Safety Superhero An ecosystem for pet care",
+      description:
+        "",
+      link: "captain-india.com",
+    },
+  ];
 
   const platformFeatures = [
     {
       icon: Zap,
-      title: 'Real-time Monitoring',
-      description: 'Advanced AI-powered monitoring systems'
+      title: "Real-time Monitoring",
+      description: "Advanced AI-powered monitoring systems",
     },
     {
       icon: Shield,
-      title: 'Emergency Response',
-      description: 'Instant alert and response protocols'
+      title: "Emergency Response",
+      description: "Instant alert and response protocols",
     },
     {
       icon: Heart,
-      title: 'Health Tracking',
-      description: 'Comprehensive wellness monitoring'
+      title: "Health Tracking",
+      description: "Comprehensive wellness monitoring",
     },
     {
       icon: Globe,
-      title: 'Cloud Integration',
-      description: 'Seamless cloud-based solutions'
-    }
-  ]
+      title: "Cloud Integration",
+      description: "Seamless cloud-based solutions",
+    },
+  ];
 
   const newsArticles = [
     {
-      date: 'July 6, 2024',
-      category: 'Senior Citizen Safety',
-      title: 'Senior Citizen Counselling',
-      image: 'https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=600',
-      description: 'Comprehensive mental health support for elderly citizens'
+      date: "July 6, 2024",
+      category: "Senior Citizen Safety",
+      title: "Senior Citizen Counselling",
+      image:
+        "https://images.pexels.com/photos/3768131/pexels-photo-3768131.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description: "Comprehensive mental health support for elderly citizens",
     },
     {
-      date: 'July 6, 2024',
-      category: 'Senior Citizen Safety',
-      title: 'Senior Citizens Staying Alone While Their Children Are Abroad',
-      image: 'https://images.pexels.com/photos/3768114/pexels-photo-3768114.jpeg?auto=compress&cs=tinysrgb&w=600',
-      description: 'Addressing the challenges of elderly care in modern families'
+      date: "July 6, 2024",
+      category: "Senior Citizen Safety",
+      title: "Senior Citizens Staying Alone While Their Children Are Abroad",
+      image:
+        "https://images.pexels.com/photos/3768114/pexels-photo-3768114.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description:
+        "Addressing the challenges of elderly care in modern families",
     },
     {
-      date: 'July 5, 2024',
-      category: 'Workforce Wellbeing',
-      title: 'Workplace Mental Health Initiatives',
-      image: 'https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=600',
-      description: 'Innovative approaches to employee mental wellness'
-    }
-  ]
+      date: "July 5, 2024",
+      category: "Workforce Wellbeing",
+      title: "Workplace Mental Health Initiatives",
+      image:
+        "https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=600",
+      description: "Innovative approaches to employee mental wellness",
+    },
+  ];
 
   // Typewriter effect
   useEffect(() => {
     if (heroInView && currentWordIndex < words.length) {
-      const timer = setTimeout(() => {
-        setDisplayText(prev => {
-          const nextWord = words[currentWordIndex]
-          return prev ? `${prev} ${nextWord}` : nextWord
-        })
-        setCurrentWordIndex(prev => prev + 1)
-      }, currentWordIndex === 0 ? 800 : 400) // Delay for first word, then faster
+      const timer = setTimeout(
+        () => {
+          setDisplayText((prev) => {
+            const nextWord = words[currentWordIndex];
+            return prev ? `${prev} ${nextWord}` : nextWord;
+          });
+          setCurrentWordIndex((prev) => prev + 1);
+        },
+        currentWordIndex === 0 ? 800 : 400
+      ); // Delay for first word, then faster
 
-      return () => clearTimeout(timer)
+      return () => clearTimeout(timer);
     }
-  }, [heroInView, currentWordIndex, words])
+  }, [heroInView, currentWordIndex, words]);
 
   // Auto-play functionality
   useEffect(() => {
     if (isAutoPlaying) {
       const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-      }, 5000)
-      return () => clearInterval(interval)
+        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      }, 5000);
+      return () => clearInterval(interval);
     }
-  }, [isAutoPlaying, heroSlides.length])
+  }, [isAutoPlaying, heroSlides.length]);
 
   // Navigation functions
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-    setIsAutoPlaying(false)
-  }
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    setIsAutoPlaying(false);
+  };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
-    setIsAutoPlaying(false)
-  }
+    setCurrentSlide(
+      (prev) => (prev - 1 + heroSlides.length) % heroSlides.length
+    );
+    setIsAutoPlaying(false);
+  };
 
   const goToSlide = (index) => {
-    setCurrentSlide(index)
-    setIsAutoPlaying(false)
-  }
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+  };
 
   return (
     <div className="min-h-screen">
       <Header />
-      
+
       {/* Enhanced Hero Section with Carousel */}
-      <section ref={heroRef} className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-hidden">
+      <section
+        ref={heroRef}
+        className="relative min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 overflow-hidden"
+      >
         <div className="absolute inset-0 bg-black/40" />
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20">
           {/* Hero Text */}
           <div className="text-center mb-8 sm:mb-16">
@@ -162,7 +199,7 @@ const Home = () => {
             >
               Get the best of
             </motion.h1>
-            
+
             {/* Animated Subtitle with Typewriter Effect */}
             <div className="text-xl sm:text-3xl md:text-5xl font-light text-blue-200 mb-6 sm:mb-8 min-h-[2rem] sm:min-h-[3rem] md:min-h-[4rem]">
               <AnimatePresence mode="wait">
@@ -170,41 +207,46 @@ const Home = () => {
                   <motion.span
                     key={`${word}-${index}`}
                     className={`inline-block mr-1 sm:mr-2 md:mr-3 ${
-                      word === 'AI,' ? 'text-red-400' :
-                      word === 'IoT,' ? 'text-green-400' :
-                      word === 'VA,' ? 'text-yellow-400' :
-                      word === 'Cloud' ? 'text-purple-400' :
-                      word === 'Solutions' ? 'text-blue-400' :
-                      'text-blue-200'
+                      word === "AI,"
+                        ? "text-red-400"
+                        : word === "IoT,"
+                        ? "text-green-400"
+                        : word === "VA,"
+                        ? "text-yellow-400"
+                        : word === "Cloud"
+                        ? "text-purple-400"
+                        : word === "Solutions"
+                        ? "text-blue-400"
+                        : "text-blue-200"
                     }`}
-                    initial={{ 
-                      opacity: 0, 
-                      y: 50, 
+                    initial={{
+                      opacity: 0,
+                      y: 50,
                       rotateX: -90,
-                      scale: 0.5
+                      scale: 0.5,
                     }}
                     animate={
-                      currentWordIndex > index 
-                        ? { 
-                            opacity: 1, 
-                            y: 0, 
+                      currentWordIndex > index
+                        ? {
+                            opacity: 1,
+                            y: 0,
                             rotateX: 0,
-                            scale: 1
-                          } 
+                            scale: 1,
+                          }
                         : {}
                     }
-                    transition={{ 
+                    transition={{
                       duration: 0.6,
                       delay: index * 0.1,
                       type: "spring",
                       stiffness: 100,
-                      damping: 12
+                      damping: 12,
                     }}
                     whileHover={{
                       scale: 1.1,
                       rotateY: 10,
                       color: "#ffffff",
-                      textShadow: "0 0 20px currentColor"
+                      textShadow: "0 0 20px currentColor",
                     }}
                   >
                     {word}
@@ -213,28 +255,26 @@ const Home = () => {
                         className="absolute"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: [0, 1, 0] }}
-                        transition={{ 
-                          duration: 0.8, 
+                        transition={{
+                          duration: 0.8,
                           repeat: 2,
-                          delay: index * 0.1 + 0.3
+                          delay: index * 0.1 + 0.3,
                         }}
-                      >
-                        
-                      </motion.span>
+                      ></motion.span>
                     )}
                   </motion.span>
                 ))}
               </AnimatePresence>
-              
+
               {/* Cursor Effect */}
               {currentWordIndex < words.length && (
                 <motion.span
                   // className="inline-block w-0.5 sm:w-1 h-6 sm:h-8 md:h-12 bg-blue-400 ml-1"
                   animate={{ opacity: [1, 0] }}
-                  transition={{ 
-                    duration: 0.8, 
-                    repeat: Infinity, 
-                    repeatType: "reverse" 
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    repeatType: "reverse",
                   }}
                 />
               )}
@@ -246,7 +286,8 @@ const Home = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              24/7 Safety and Security Services with Real-Time Safety Alert Services
+              24/7 Safety and Security Services with Real-Time Safety Alert
+              Services
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -274,9 +315,9 @@ const Home = () => {
                   initial={{ opacity: 0, scale: 1.1, rotateY: -15 }}
                   animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                   exit={{ opacity: 0, scale: 0.95, rotateY: 15 }}
-                  transition={{ 
+                  transition={{
                     duration: 0.8,
-                    ease: [0.25, 0.46, 0.45, 0.94]
+                    ease: [0.25, 0.46, 0.45, 0.94],
                   }}
                 >
                   <img
@@ -285,7 +326,7 @@ const Home = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                  
+
                   {/* Slide Content */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8 md:p-12 text-white">
                     <motion.div
@@ -317,7 +358,6 @@ const Home = () => {
                       >
                         {heroSlides[currentSlide].description}
                       </motion.p>
-                      
                     </motion.div>
                   </div>
                 </motion.div>
@@ -331,7 +371,7 @@ const Home = () => {
               >
                 <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
               </button>
-              
+
               <button
                 onClick={nextSlide}
                 className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-12 sm:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110 z-10 touch-manipulation"
@@ -348,9 +388,9 @@ const Home = () => {
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 touch-manipulation ${
-                    index === currentSlide 
-                      ? 'bg-red-500 scale-125' 
-                      : 'bg-white/50 hover:bg-white/70'
+                    index === currentSlide
+                      ? "bg-red-500 scale-125"
+                      : "bg-white/50 hover:bg-white/70"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -363,7 +403,7 @@ const Home = () => {
                 onClick={() => setIsAutoPlaying(!isAutoPlaying)}
                 className="text-white/70 hover:text-white transition-colors text-xs sm:text-sm touch-manipulation"
               >
-                {isAutoPlaying ? 'Pause Auto-play' : 'Resume Auto-play'}
+                {isAutoPlaying ? "Pause Auto-play" : "Resume Auto-play"}
               </button>
             </div>
           </div>
@@ -385,7 +425,7 @@ const Home = () => {
                 className="rounded-xl sm:rounded-2xl shadow-2xl"
               />
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={aboutInView ? { opacity: 1, x: 0 } : {}}
@@ -393,22 +433,30 @@ const Home = () => {
               className="text-center lg:text-left"
             >
               <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
-                ABOUT <span className="text-red-600 border-b-4 border-red-600">US!</span>
+                ABOUT{" "}
+                <span className="text-red-600 border-b-4 border-red-600">
+                  US!
+                </span>
               </h2>
               <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed">
-                We are a pioneering social impact start-up dedicated to humanizing safety for Humans and Pets. 
-                With our subscription-based offerings, we utilize advanced technology in a state-of-the-art 24/7 
-                Safety Station to deliver exceptional life safety services, providing our clients with real-time 
-                safety alert services and unmatched peace of mind.
+                We are an innovative tech startup dedicated to Humanizing Safety
+                for People and Pets. Our mission is clear: to save lives through
+                cutting-edge technology. With a management team boasting over
+                100 years of combined experience in safety and security, we
+                possess the expertise necessary to create impactful safety
+                solutions. This understanding of the domain knowledge enables us
+                to develop safety solutions that offer peace of mind.
               </p>
-              
+
               <motion.div
                 className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={aboutInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">HUMANIZING SAFETY SERVICES</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
+                  HUMANIZING SAFETY SERVICES
+                </h3>
               </motion.div>
 
               <motion.div
@@ -436,7 +484,10 @@ const Home = () => {
       </section>
 
       {/* Platform Services Section */}
-      <section ref={servicesRef} className="py-12 sm:py-20 bg-gray-900 text-white">
+      <section
+        ref={servicesRef}
+        className="py-12 sm:py-20 bg-gray-900 text-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12 sm:mb-16"
@@ -445,7 +496,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold mb-4">
-              PLATFORM <span className="text-red-500 border-b-4 border-red-500">SERVICES</span>
+              PLATFORM{" "}
+              <span className="text-red-500 border-b-4 border-red-500">
+                SERVICES
+              </span>
             </h2>
           </motion.div>
 
@@ -454,33 +508,38 @@ const Home = () => {
             <motion.div
               className="relative group cursor-pointer"
               initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-              animate={servicesInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}}
+              animate={
+                servicesInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}
+              }
               transition={{ duration: 0.8, delay: 0.2 }}
-              whileHover={{ 
-                scale: 1.02, 
+              whileHover={{
+                scale: 1.02,
                 rotateY: 2,
-                z: 50
+                z: 50,
               }}
             >
               <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl">
                 <img
-                  src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="https://images.pexels.com/photos/5668856/pexels-photo-5668856.jpeg?auto=compress&cs=tinysrgb&w=1200"
                   alt="Workforce Wellbeing"
                   className="w-full h-64 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
                   <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 text-red-400">
-                    DIAL 4567: <span className="text-white">WORKFORCE WELLBEING</span>
+                    Worksafe4567:{" "}
+                    <span className="text-white">WORKFORCE WELLBEING</span>
                   </h3>
                   <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                    Comprehensive workplace safety monitoring with AI-powered analytics and real-time alerts.
+                    Comprehensive workplace safety monitoring with AI-powered
+                    analytics and real-time alerts.
                   </p>
                   <Link
-                    to="/platform-services"
+                    to="https://worksafe4567.vercel.app/platform-services"
                     className="inline-flex items-center text-red-400 hover:text-red-300 transition-colors text-sm sm:text-base touch-manipulation"
                   >
-                    Learn More <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                    Learn More{" "}
+                    <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                   </Link>
                 </div>
               </div>
@@ -490,12 +549,14 @@ const Home = () => {
             <motion.div
               className="relative group cursor-pointer"
               initial={{ opacity: 0, scale: 0.8, rotateY: 15 }}
-              animate={servicesInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}}
+              animate={
+                servicesInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}
+              }
               transition={{ duration: 0.8, delay: 0.4 }}
-              whileHover={{ 
-                scale: 1.02, 
+              whileHover={{
+                scale: 1.02,
                 rotateY: -2,
-                z: 50
+                z: 50,
               }}
             >
               <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl">
@@ -510,13 +571,15 @@ const Home = () => {
                     SENIOR CITIZEN <span className="text-white">SAFETY</span>
                   </h3>
                   <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                    24/7 monitoring and care services for elderly citizens with emergency response protocols.
+                    24/7 monitoring and care services for elderly citizens with
+                    emergency response protocols.
                   </p>
                   <Link
-                    to="/platform-services"
+                    to="https://worksafe4567.vercel.app/platform-services"
                     className="inline-flex items-center text-red-400 hover:text-red-300 transition-colors text-sm sm:text-base touch-manipulation"
                   >
-                    Learn More <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                    Learn More{" "}
+                    <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                   </Link>
                 </div>
               </div>
@@ -526,7 +589,10 @@ const Home = () => {
       </section>
 
       {/* Our Platforms Section */}
-      <section ref={platformsRef} className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 to-gray-100">
+      <section
+        ref={platformsRef}
+        className="py-12 sm:py-20 bg-gradient-to-br from-blue-50 to-gray-100"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-12 sm:mb-16"
@@ -535,7 +601,10 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              OUR <span className="text-red-600 border-b-4 border-red-600">PLATFORMS</span>
+              OUR{" "}
+              <span className="text-red-600 border-b-4 border-red-600">
+                PLATFORMS
+              </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
               Advanced technology solutions powering our safety services
@@ -548,12 +617,14 @@ const Home = () => {
                 key={index}
                 className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 group"
                 initial={{ opacity: 0, y: 50, rotateX: -15 }}
-                animate={platformsInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+                animate={
+                  platformsInView ? { opacity: 1, y: 0, rotateX: 0 } : {}
+                }
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.03, 
+                whileHover={{
+                  scale: 1.03,
                   rotateX: 2,
-                  y: -10
+                  y: -10,
                 }}
               >
                 <motion.div
@@ -563,8 +634,12 @@ const Home = () => {
                 >
                   <feature.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </motion.div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{feature.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -581,9 +656,14 @@ const Home = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              NEWS & <span className="text-red-600 border-b-4 border-red-600">ARTICLES</span>
+              NEWS &{" "}
+              <span className="text-red-600 border-b-4 border-red-600">
+                ARTICLES
+              </span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600">Stay updated with the latest in safety technology and services</p>
+            <p className="text-lg sm:text-xl text-gray-600">
+              Stay updated with the latest in safety technology and services
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
@@ -594,9 +674,9 @@ const Home = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={newsInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ 
-                  scale: 1.02, 
-                  y: -5
+                whileHover={{
+                  scale: 1.02,
+                  y: -5,
                 }}
               >
                 <div className="relative overflow-hidden">
@@ -612,7 +692,7 @@ const Home = () => {
                     {article.category}
                   </div>
                 </div>
-                
+
                 <div className="p-4 sm:p-6">
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors line-clamp-2">
                     {article.title}
@@ -624,7 +704,7 @@ const Home = () => {
                     to="/blog"
                     className="inline-flex items-center text-red-600 hover:text-red-700 font-medium transition-colors text-sm sm:text-base touch-manipulation"
                   >
-                    Read More 
+                    Read More
                     <motion.div
                       className="ml-2"
                       whileHover={{ x: 5 }}
@@ -657,7 +737,7 @@ const Home = () => {
 
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,44 +1,73 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Phone, Mail, MapPin, Send, User, MessageSquare, Clock, Globe, Shield, CheckCircle, ExternalLink } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import toast, { Toaster } from 'react-hot-toast'
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Send,
+  User,
+  MessageSquare,
+  Clock,
+  Globe,
+  Shield,
+  CheckCircle,
+  ExternalLink,
+} from "lucide-react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import toast, { Toaster } from "react-hot-toast";
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const [heroRef, heroInView] = useInView({ threshold: 0.3, triggerOnce: true });
-  const [formRef, formInView] = useInView({ threshold: 0.3, triggerOnce: true });
-  const [infoRef, infoInView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const [heroRef, heroInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+  const [formRef, formInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
+  const [infoRef, infoInView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      toast.error('Please fill in all required fields');
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
+    ) {
+      toast.error("Please fill in all required fields");
       return;
     }
-    
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email)) {
-      toast.error('Please enter a valid email address');
+      toast.error("Please enter a valid email address");
       return;
     }
 
@@ -46,10 +75,10 @@ const Contact = () => {
     //const submissionToast = toast.loading('Sending your message...');
 
     try {
-      const response = await fetch('https://zimaxx.onrender.com/api/send', {
-        method: 'POST',
+      const response = await fetch("https://zimaxx.onrender.com/api/send", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -58,40 +87,41 @@ const Contact = () => {
 
       if (response.ok) {
         console.log(response.ok);
-        
-         toast.success('Mail sent successfully', {
-        duration: 4000,
-        position: 'top-right',
-        style: {
-          background: '#10B981',
-          color: '#fff',
-          fontWeight: '600',
-          borderRadius: '12px',
-          padding: '16px 20px',
-          fontSize: '16px',
-          boxShadow: '0 10px 25px -3px rgba(16, 185, 129, 0.3), 0 4px 6px -2px rgba(16, 185, 129, 0.05)'
-        },
-        iconTheme: {
-          primary: '#fff',
-          secondary: '#10B981',
-        },
-      })
-        
+
+        toast.success("Mail sent successfully", {
+          duration: 4000,
+          position: "top-right",
+          style: {
+            background: "#10B981",
+            color: "#fff",
+            fontWeight: "600",
+            borderRadius: "12px",
+            padding: "16px 20px",
+            fontSize: "16px",
+            boxShadow:
+              "0 10px 25px -3px rgba(16, 185, 129, 0.3), 0 4px 6px -2px rgba(16, 185, 129, 0.05)",
+          },
+          iconTheme: {
+            primary: "#fff",
+            secondary: "#10B981",
+          },
+        });
+
         // Reset the form
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: ''
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
         });
       } else {
-        throw new Error(result.error || 'Something went wrong.');
+        throw new Error(result.error || "Something went wrong.");
       }
     } catch (error: any) {
-      console.error('Submission error:', error);
+      console.error("Submission error:", error);
       toast.error(
-        `⚠️ Failed to send message: ${error.message || 'Please try again.'}`, 
+        `⚠️ Failed to send message: ${error.message || "Please try again."}`,
         {
           id: submissionToast,
           duration: 5000,
@@ -105,66 +135,71 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Call Us',
-      details: ['Toll-Free: 1800 210 4567', 'Available 24/7'],
-      color: 'from-blue-500 to-blue-600',
-      hoverColor: 'hover:from-blue-600 hover:to-blue-700'
+      title: "Call Us",
+      details: ["Toll-Free: 1800 210 4567"],
+      color: "from-blue-500 to-blue-600",
+      hoverColor: "hover:from-blue-600 hover:to-blue-700",
     },
     {
       icon: Mail,
-      title: 'Email Us',
-      details: ['support@worksafe4567.com', 'Response within 2 hours'],
-      color: 'from-red-500 to-red-600',
-      hoverColor: 'hover:from-red-600 hover:to-red-700'
+      title: "Email Us",
+      details: ["support@worksafe4567.com"],
+      color: "from-red-500 to-red-600",
+      hoverColor: "hover:from-red-600 hover:to-red-700",
     },
     {
       icon: MapPin,
-      title: 'Visit Us',
-      details: ['45, Chimbai Rd', 'Bandra West, Mumbai 400050'],
-      color: 'from-green-500 to-green-600',
-      hoverColor: 'hover:from-green-600 hover:to-green-700'
+      title: "Visit Us",
+      details: ["Bandra West, Mumbai 400050"],
+      color: "from-green-500 to-green-600",
+      hoverColor: "hover:from-green-600 hover:to-green-700",
     },
     {
       icon: Clock,
-      title: 'Business Hours',
-      details: ['Mon-Fri: 9:00 AM - 6:00 PM', 'Emergency: 24/7'],
-      color: 'from-purple-500 to-purple-600',
-      hoverColor: 'hover:from-purple-600 hover:to-purple-700'
-    }
+      title: "Business Hours",
+      details: ["Mon-Fri: 9:00 AM - 6:00 PM"],
+      color: "from-purple-500 to-purple-600",
+      hoverColor: "hover:from-purple-600 hover:to-purple-700",
+    },
   ];
 
   const features = [
     {
       icon: Shield,
-      title: 'Secure Communication',
-      description: 'All communications are encrypted and secure'
+      title: "Humanizing Safety for People and Pets ",
+      description:
+        "Ensuring protection and care for both humans and their beloved pets.",
     },
     {
       icon: Clock,
-      title: 'Quick Response',
-      description: 'We respond to all inquiries within 2 hours'
+      title: "Life Safety Services ",
+      description:
+        "Providing rapid and reliable response in every safety situation.",
     },
     {
       icon: Globe,
-      title: '24/7 Support',
-      description: 'Round-the-clock emergency support available'
-    }
+      title: "24/7 Safety Station",
+      description: "Always active and ready to assist, anytime and anywhere.",
+    },
   ];
 
   const openInGoogleMaps = () => {
     window.open(
-      'https://www.google.com/maps/dir//45,+Chimbai+Rd+Bandra+West+Mumbai,+Maharashtra+400050/@19.055577,72.8246211,15z',
-      '_blank'
+      "https://www.google.com/maps/dir//45,+Chimbai+Rd+Bandra+West+Mumbai,+Maharashtra+400050/@19.055577,72.8246211,15z",
+      "_blank"
     );
   };
 
   return (
     <div className="min-h-screen">
       <Header />
-       <Toaster />
+      <Toaster />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+      <section
+        ref={heroRef}
+        className="relative py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900"
+      >
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
@@ -181,8 +216,8 @@ const Contact = () => {
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Get in touch with our safety experts. We're here to help you create safer environments
-            for your workforce and loved ones.
+            Get in touch with our safety experts. We're here to help you create
+            safer environments for your workforce and loved ones.
           </motion.p>
 
           {/* Features */}
@@ -208,7 +243,9 @@ const Contact = () => {
                 >
                   <feature.icon className="w-6 h-6 text-white" />
                 </motion.div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-300 text-sm">{feature.description}</p>
               </motion.div>
             ))}
@@ -285,10 +322,16 @@ const Contact = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   >
                     <option value="">Select a subject</option>
-                    <option value="Workforce Wellbeing">Workforce Wellbeing</option>
-                    <option value="Senior Citizen Safety">Senior Citizen Safety</option>
                     <option value="General Inquiry">General Inquiry</option>
-                    <option value="Technical Support">Technical Support</option>
+                    <option value="Workforce Wellbeing">
+                      Workforce Wellbeing
+                    </option>
+                    <option value="Captain India : Pet Happiness & Safety">
+                      Captain India : Pet Happiness & Safety
+                    </option>
+                    <option value="Senior Citizen Safety">
+                      Senior Citizen Safety
+                    </option>
                     <option value="Partnership">Partnership</option>
                   </select>
                 </div>
@@ -346,13 +389,19 @@ const Contact = () => {
                   whileHover={{ y: -5 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${info.color} ${info.hoverColor} rounded-xl flex items-center justify-center transition-all`}>
+                    <div
+                      className={`w-12 h-12 bg-gradient-to-br ${info.color} ${info.hoverColor} rounded-xl flex items-center justify-center transition-all`}
+                    >
                       <info.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                        {info.title}
+                      </h3>
                       {info.details.map((detail, i) => (
-                        <p key={i} className="text-gray-600 mb-1">{detail}</p>
+                        <p key={i} className="text-gray-600 mb-1">
+                          {detail}
+                        </p>
                       ))}
                     </div>
                   </div>
@@ -360,7 +409,7 @@ const Contact = () => {
               ))}
 
               {/* Map */}
-              <motion.div 
+              <motion.div
                 className="bg-white rounded-2xl p-6 shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={infoInView ? { opacity: 1, y: 0 } : {}}
@@ -399,9 +448,9 @@ const Contact = () => {
       {/* Emergency Contact Section */}
       <section className="py-20 bg-gradient-to-br from-red-600 to-red-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 50 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
@@ -409,7 +458,8 @@ const Contact = () => {
               Emergency Contact
             </h2>
             <p className="text-xl text-red-100 mb-12 max-w-3xl mx-auto">
-              For immediate safety concerns or emergencies, contact our 24/7 response team
+              For immediate safety concerns or emergencies, contact our 24/7
+              response team
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <motion.a
@@ -421,7 +471,6 @@ const Contact = () => {
                 <Phone className="mr-3 w-6 h-6" />
                 1800 210 4567
               </motion.a>
-            
             </div>
           </motion.div>
         </div>
