@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Eye, Target, Users, Shield, ArrowRight } from "lucide-react";
+import { Eye, Target, Shield, ArrowRight } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -20,11 +20,11 @@ const AboutUs = () => {
     },
   };
 
-  const scaleIn = {
-    initial: { opacity: 0, scale: 0.8 },
-    animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.8 },
-  };
+  // const scaleIn = {
+  //   initial: { opacity: 0, scale: 0.8 },
+  //   animate: { opacity: 1, scale: 1 },
+  //   transition: { duration: 0.8 }
+  // }
 
   return (
     <div className="min-h-screen bg-white">
@@ -46,13 +46,11 @@ const AboutUs = () => {
             </h1>
             <div className="w-32 h-1 bg-red-500 mx-auto mb-8"></div>
             <p className="text-xl sm:text-2xl lg:text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              We are an innovative tech startup dedicated to Humanizing Safety
-              for People and Pets. Our mission is clear: to save lives through
-              cutting-edge technology. With a management team boasting over 100
-              years of combined experience in safety and security, we possess
-              the expertise necessary to create impactful safety solutions. This
-              understanding of the domain knowledge enables us to develop safety
-              solutions that offer peace of mind.
+              We are an innovative social impact startup dedicated to making
+              safety more human-centered for People and Pets. Our subscription
+              services utilize technology to deliver comprehensive life safety
+              solutions, giving clients real-time protection and exceptional
+              peace of mind.
             </p>
           </motion.div>
 
@@ -163,9 +161,10 @@ const AboutUs = () => {
               viewport={{ once: true }}
             >
               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed">
-                The leadership team boasts of a consolidated experience of over
-                100 years in the domain of Safety and Electronic Security, some
-                of them being game changers in the evolution of the sector.
+                Founded by esteemed technocrats, the leadership team has more
+                than a century of combined experience in Safety and Electronic
+                Security, with several members being pioneers in the industry's
+                development.
               </p>
 
               <div className="grid grid-cols-2 gap-6">
@@ -177,9 +176,9 @@ const AboutUs = () => {
                 </div>
                 <div className="text-center p-6 bg-gray-50 rounded-xl">
                   <div className="text-3xl font-bold text-red-600 mb-2">
-                    24/7
+                    2022 
                   </div>
-                  <div className="text-gray-600">Safety Station</div>
+                  <div className="text-gray-600">Incorporated</div>
                 </div>
               </div>
             </motion.div>
@@ -227,8 +226,8 @@ const AboutUs = () => {
 
               <div className="bg-white p-8 rounded-2xl shadow-xl">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  To pioneer the category of Pet Happiness & Community Animals
-                  Care
+                  We imagine a world where every person and pet lives safe,
+                  healthy, and worry-free.
                 </p>
               </div>
             </motion.div>
@@ -249,9 +248,9 @@ const AboutUs = () => {
 
               <div className="bg-white p-8 rounded-2xl shadow-xl">
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  To offer affordable technology access to Animals & Human
-                  Happiness and Wellbeing through a "Platform as a Service"
-                  subscription model
+                  To provide affordable technology access to people and pets,
+                  keeping them happy and safe forever, through innovative
+                  solutions.
                 </p>
               </div>
             </motion.div>
@@ -269,12 +268,12 @@ const AboutUs = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Ready to Experience Safety Innovation?
+              Ready to Discover Safety Innovation?
             </h2>
             <p className="text-xl text-red-100 mb-8 leading-relaxed">
-              Join thousands of satisfied customers who trust WorkSafe4567 for
-              their safety needs. Contact us today to learn more about our
-              platform services.
+              Join thousands of satisfied customers who trust us for their
+              safety needs. Contact us today to learn more about our life safety
+              services.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

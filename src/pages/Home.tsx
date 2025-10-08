@@ -3,11 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
   ArrowRight,
-  Users,
   Shield,
   Heart,
-  Zap,
-  Award,
+  Zap, 
   Globe,
   ChevronLeft,
   ChevronRight,
@@ -42,44 +40,33 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Typewriter effect state
-  const [displayText, setDisplayText] = useState("");
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const fullText = "AI, IoT, VA, and Cloud Solutions";
-  const words = ["AI,", "IoT,", "VA,", "and", "Cloud", "Solutions"];
+  // // Typewriter effect state
+  // const [displayText, setDisplayText] = useState("");
+  // const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  // const fullText = "AI, IoT, VA, and Cloud Solutions";
+  // const words = ["AI,", "IoT,", "VA,", "and", "Cloud", "Solutions"];
 
   const heroSlides = [
-    // {
-    //   src: 'https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    //   title: 'WORKFORCE WELLBEING',
-    //   subtitle: 'Advanced AI monitoring for workplace safety',
-    //   description: 'Comprehensive workplace safety monitoring with AI-powered analytics and real-time alerts'
-    // },
-
     {
       src: "https://images.pexels.com/photos/5668856/pexels-photo-5668856.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      title: "Workforce Safety 24/7:",
+      title: "WorkfSafe 24/7:",
       subtitle: "Always On",
-      description:
-        "India’s First Workforce Safety and Wellness Partner",
+      description: "India’s First Workforce Safety and Wellness Partner",
     },
     {
       src: "https://images.pexels.com/photos/3768114/pexels-photo-3768114.jpeg?auto=compress&cs=tinysrgb&w=1200",
       title: "Senior Citizen Safety:",
       subtitle: " Har Waqt Appke Saath",
-      description:
-        "Tech-enabled safety services 24/7 ",
+      description: "Tech-enabled safety services 24/7 ",
     },
     {
       src: "https://i.ibb.co/0jSJJCp7/Captain-India.webp",
       title: "Captain India Pet Happiness and Safety:",
       subtitle: "Your Pet's Safety Superhero An ecosystem for pet care",
-      description:
-        "",
+      description: "",
       link: "captain-india.com",
     },
   ];
-
   const platformFeatures = [
     {
       icon: Zap,
@@ -123,7 +110,7 @@ const Home = () => {
     },
     {
       date: "July 5, 2024",
-      category: "Workforce Wellbeing",
+      category: "WorkSafe 24/7",
       title: "Workplace Mental Health Initiatives",
       image:
         "https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -132,22 +119,22 @@ const Home = () => {
   ];
 
   // Typewriter effect
-  useEffect(() => {
-    if (heroInView && currentWordIndex < words.length) {
-      const timer = setTimeout(
-        () => {
-          setDisplayText((prev) => {
-            const nextWord = words[currentWordIndex];
-            return prev ? `${prev} ${nextWord}` : nextWord;
-          });
-          setCurrentWordIndex((prev) => prev + 1);
-        },
-        currentWordIndex === 0 ? 800 : 400
-      ); // Delay for first word, then faster
+  // useEffect(() => {
+  //   if (heroInView && currentWordIndex < words.length) {
+  //     const timer = setTimeout(
+  //       () => {
+  //         setDisplayText((prev) => {
+  //           const nextWord = words[currentWordIndex];
+  //           return prev ? `${prev} ${nextWord}` : nextWord;
+  //         });
+  //         setCurrentWordIndex((prev) => prev + 1);
+  //       },
+  //       currentWordIndex === 0 ? 800 : 400
+  //     ); // Delay for first word, then faster
 
-      return () => clearTimeout(timer);
-    }
-  }, [heroInView, currentWordIndex, words]);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [heroInView, currentWordIndex, words]);
 
   // Auto-play functionality
   useEffect(() => {
@@ -192,93 +179,15 @@ const Home = () => {
           {/* Hero Text */}
           <div className="text-center mb-8 sm:mb-16">
             <motion.h1
-              className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6"
+              className="text-3xl sm:text-5xl md:text-5xl font-bold text-white mb-4 sm:mb-6"
               initial={{ opacity: 0, y: 50 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
-              Get the best of
+              Trusted Partner for Life Safety: People and Pets
             </motion.h1>
 
-            {/* Animated Subtitle with Typewriter Effect */}
-            <div className="text-xl sm:text-3xl md:text-5xl font-light text-blue-200 mb-6 sm:mb-8 min-h-[2rem] sm:min-h-[3rem] md:min-h-[4rem]">
-              <AnimatePresence mode="wait">
-                {words.map((word, index) => (
-                  <motion.span
-                    key={`${word}-${index}`}
-                    className={`inline-block mr-1 sm:mr-2 md:mr-3 ${
-                      word === "AI,"
-                        ? "text-red-400"
-                        : word === "IoT,"
-                        ? "text-green-400"
-                        : word === "VA,"
-                        ? "text-yellow-400"
-                        : word === "Cloud"
-                        ? "text-purple-400"
-                        : word === "Solutions"
-                        ? "text-blue-400"
-                        : "text-blue-200"
-                    }`}
-                    initial={{
-                      opacity: 0,
-                      y: 50,
-                      rotateX: -90,
-                      scale: 0.5,
-                    }}
-                    animate={
-                      currentWordIndex > index
-                        ? {
-                            opacity: 1,
-                            y: 0,
-                            rotateX: 0,
-                            scale: 1,
-                          }
-                        : {}
-                    }
-                    transition={{
-                      duration: 0.6,
-                      delay: index * 0.1,
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 12,
-                    }}
-                    whileHover={{
-                      scale: 1.1,
-                      rotateY: 10,
-                      color: "#ffffff",
-                      textShadow: "0 0 20px currentColor",
-                    }}
-                  >
-                    {word}
-                    {currentWordIndex > index && (
-                      <motion.span
-                        className="absolute"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: [0, 1, 0] }}
-                        transition={{
-                          duration: 0.8,
-                          repeat: 2,
-                          delay: index * 0.1 + 0.3,
-                        }}
-                      ></motion.span>
-                    )}
-                  </motion.span>
-                ))}
-              </AnimatePresence>
-
-              {/* Cursor Effect */}
-              {currentWordIndex < words.length && (
-                <motion.span
-                  // className="inline-block w-0.5 sm:w-1 h-6 sm:h-8 md:h-12 bg-blue-400 ml-1"
-                  animate={{ opacity: [1, 0] }}
-                  transition={{
-                    duration: 0.8,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
-              )}
-            </div>
+          
 
             <motion.p
               className="text-base sm:text-xl text-gray-300 mb-8 sm:mb-12 max-w-3xl mx-auto px-4"
@@ -286,8 +195,7 @@ const Home = () => {
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              24/7 Safety and Security Services with Real-Time Safety Alert
-              Services
+              24/7 Life Safety and Response Services
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -439,13 +347,11 @@ const Home = () => {
                 </span>
               </h2>
               <p className="text-base sm:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed">
-                We are an innovative tech startup dedicated to Humanizing Safety
-                for People and Pets. Our mission is clear: to save lives through
-                cutting-edge technology. With a management team boasting over
-                100 years of combined experience in safety and security, we
-                possess the expertise necessary to create impactful safety
-                solutions. This understanding of the domain knowledge enables us
-                to develop safety solutions that offer peace of mind.
+                We are an innovative social impact startup dedicated to making
+                safety more human-centered for People and Pets. Our subscription
+                services utilize technology to deliver comprehensive life safety
+                solutions, giving clients real-time protection and exceptional
+                peace of mind.
               </p>
 
               <motion.div
@@ -504,7 +410,7 @@ const Home = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-            {/* Workforce Wellbeing Card */}
+            {/* WorkSafe 24/7 Card */}
             <motion.div
               className="relative group cursor-pointer"
               initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
@@ -521,18 +427,17 @@ const Home = () => {
               <div className="relative overflow-hidden rounded-xl sm:rounded-2xl shadow-2xl">
                 <img
                   src="https://images.pexels.com/photos/5668856/pexels-photo-5668856.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                  alt="Workforce Wellbeing"
+                  alt="WorkSafe 24/7"
                   className="w-full h-64 sm:h-96 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
                   <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 text-red-400">
-                    Worksafe4567:{" "}
-                    <span className="text-white">WORKFORCE WELLBEING</span>
+                    WorkSafe 24/7 <span className="text-white"></span>
                   </h3>
                   <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                    Comprehensive workplace safety monitoring with AI-powered
-                    analytics and real-time alerts.
+                    Comprehensive workplace safety monitoring through AI-driven
+                    analytics and real-time response management.
                   </p>
                   <Link
                     to="https://worksafe4567.vercel.app/platform-services"
@@ -568,11 +473,12 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-8">
                   <h3 className="text-lg sm:text-2xl font-bold mb-2 sm:mb-4 text-red-400">
-                    SENIOR CITIZEN <span className="text-white">SAFETY</span>
+                    SENIOR CITIZEN SAFETY{" "}
+                    <span className="text-white">(coming Soon...)</span>
                   </h3>
                   <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-                    24/7 monitoring and care services for elderly citizens with
-                    emergency response protocols.
+                    Technology-enabled senior care offers emergency response
+                    services for life safety.
                   </p>
                   <Link
                     to="https://worksafe4567.vercel.app/platform-services"

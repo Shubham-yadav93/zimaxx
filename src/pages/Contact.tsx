@@ -143,7 +143,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["support@worksafe4567.com"],
+      details: ["support@Zimaxxtech.com"],
       color: "from-red-500 to-red-600",
       hoverColor: "hover:from-red-600 hover:to-red-700",
     },

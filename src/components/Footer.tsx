@@ -46,9 +46,9 @@ const Footer = () => {
                   src="https://i.ibb.co/rRPHssHX/Zimaxx-Logo-Pdf-removebg-preview.png"
                   alt="WorkSafe 24/7 Logo"
                   className="h-16 sm:h-20 w-auto drop-shadow-md mb-4"
-                  initial={{ scale: 0.8, opacity: 0 }}
+                  initial={{ scale: 1, opacity: 0 }}
                   animate={{ 
-                    scale: 1, 
+                    scale: 1.45, 
                     opacity: 1,
                      filter: "drop-shadow(0 0 20px rgba(255, 255, 255, 0.6))",
                     y: [0, -2, 0]
@@ -62,7 +62,7 @@ const Footer = () => {
                     }
                   }}
                   whileHover={{ 
-                    scale: 1.1,
+                    scale: 1.67,
                      filter: "drop-shadow(0 0 20px rgba(255, 255,255, 1.5))",
                     transition: { duration: 0.3 }
                   }}
