@@ -21,12 +21,28 @@ const Footer = () => {
     { name: 'Return & Refund Policy', path: '/return-refund' }
   ]
 
-  const socialIcons = [
-    { icon: Linkedin, href: '#', color: 'hover:text-blue-600' },
-    { icon: Twitter, href: '#', color: 'hover:text-blue-400' },
-    { icon: Facebook, href: '#', color: 'hover:text-blue-700' },
-    { icon: Instagram, href: '#', color: 'hover:text-pink-600' }
-  ]
+ const socialIcons = [
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/worksafe247/",
+      color: "hover:text-blue-600",
+    },
+    {
+      icon: Twitter,
+      href: "https://x.com/WorkSafe24_7",
+      color: "hover:text-blue-400",
+    },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/WorkSafe247",
+      color: "hover:text-blue-700",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/worksafe24_7?igsh=eWFvZ3RwZXB4aG9x",
+      color: "hover:text-pink-600",
+    },
+  ];
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -77,7 +93,9 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Pioneering social impact startup dedicated to humanizing safety for humans and pets with advanced AI, IoT, and cloud solutions.
+               Pioneering social impact start-up enhancing human and pet safety
+              through advanced technology and 24/7 real-time safety alert
+              services for complete peace of mind.
             </motion.p>
 
             {/* Social Icons */}
