@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -26,9 +25,9 @@ const Header = () => {
   ]
 
   const platformServices = [
-    { name: 'WorkSafe 24/7', label: 'WorkSafe 24/7', url: 'https://worksafe4567.vercel.app/platform-services' },
-    { name: 'SENIOR CITIZEN SAFETY', label: 'Senior Citizen Safety', url: 'https://dial4567.com/' },
-    { name: 'CAPTAIN INDIA', label: 'Captain India – Pet Happiness & Safety', url: 'https://captain-india.com' }
+    { name: 'WorkSafe 24/7', label: 'WorkSafe 24/7', url: 'https://worksafe4567.vercel.app/platform-services', badge: null },
+    { name: 'SENIOR CITIZEN SAFETY', label: 'Senior Citizen Safety', url: 'https://dial4567.com/', badge: 'Coming Soon' },
+    { name: 'CAPTAIN INDIA', label: 'Captain India – Pet Happiness & Safety', url: 'https://captain-india.com', badge: null }
   ]
 
   // Custom SVG Icons for social media
@@ -269,7 +268,7 @@ const Header = () => {
                 <AnimatePresence>
                   {isDropdownOpen && (
                     <motion.div
-                      className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
+                      className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden z-50"
                       initial={{ opacity: 0, y: -10, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -281,13 +280,27 @@ const Header = () => {
                           href={service.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-red-50 transition-colors duration-200 border-l-4 border-transparent hover:border-red-600"
+                          className={`block px-4 py-3 text-gray-700 hover:text-red-600 hover:bg-red-50 transition-colors duration-200 border-l-4 border-transparent hover:border-red-600 ${
+                            service.badge ? 'pointer-events-none opacity-60' : ''
+                          }`}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.05 }}
-                          whileHover={{ x: 5 }}
+                          whileHover={service.badge ? {} : { x: 5 }}
                         >
-                          <div className="font-medium text-sm">{service.label}</div>
+                          <div className="flex items-center justify-between">
+                            <div className="font-medium text-sm">{service.label}</div>
+                            {service.badge && (
+                              <motion.span
+                                className="bg-amber-400 text-amber-900 text-xs font-semibold px-2.5 py-1 rounded-full"
+                                initial={{ scale: 0 }}
+                                animate={{ scale: 1 }}
+                                transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                              >
+                                {service.badge}
+                              </motion.span>
+                            )}
+                          </div>
                         </motion.a>
                       ))}
                     </motion.div>
@@ -396,13 +409,25 @@ const Header = () => {
                         href={service.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block px-4 py-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm touch-manipulation"
+                        className={`block px-4 py-2 text-gray-600 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors text-sm touch-manipulation flex items-center justify-between ${
+                          service.badge ? 'pointer-events-none opacity-60' : ''
+                        }`}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.5 + index * 0.1 }}
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        {service.label}
+                        <span>{service.label}</span>
+                        {service.badge && (
+                          <motion.span
+                            className="bg-amber-400 text-amber-900 text-xs font-semibold px-2 py-0.5 rounded-full ml-2"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                          >
+                            {service.badge}
+                          </motion.span>
+                        )}
                       </motion.a>
                     ))}
                   </div>
